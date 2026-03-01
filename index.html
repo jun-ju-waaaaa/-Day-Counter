@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>赤ちゃん月齢計算ツール</title>
+</head>
+<body>
+<h1>赤ちゃん 月齢・週齢 計算ツール</h1>
+
+<input type="date" id="birthDate">
+<button onclick="calculate()">計算</button>
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+  const birth = new Date(document.getElementById("birthDate").value);
+  const today = new Date();
+
+  const diffTime = today - birth;
+  const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const weeks = Math.floor(days / 7);
+  const extraDays = days % 7;
+
+  let months = (today.getFullYear() - birth.getFullYear()) * 12;
+  months += today.getMonth() - birth.getMonth();
+  if (today.getDate() < birth.getDate()) {
+    months--;
+  }
+
+  document.getElementById("result").innerHTML =
+    `生後 ${days} 日<br>
+     生後 ${weeks} 週 ${extraDays} 日<br>
+     生後 ${months} ヶ月`;
+}
+</script>
+
+</body>
+</html>
