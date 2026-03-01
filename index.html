@@ -58,24 +58,29 @@
   }
 
   .card {
-    margin-top: 22px;
-    padding: 20px;
+    margin-top: 18px;
+    padding: 18px;
     background: white;
     border-radius: 14px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-    font-size: 1.35rem;
-    line-height: 2.0;
-    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    line-height: 1.9;
+  }
+
+  .label {
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+
+  .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 6px;
   }
 
   .placeholder {
     opacity: 0.6;
     font-size: 1.2rem;
-  }
-
-  strong {
-    font-size: 1.5rem;
-    font-weight: 700;
   }
 </style>
 </head>
@@ -86,8 +91,17 @@
 <input type="date" id="birthDate">
 <button onclick="calculate()">計算する</button>
 
-<div id="result" class="card">
-  <div class="placeholder">誕生日を入力すると、ここに結果が表示されます。</div>
+<!-- カードを最初から表示 -->
+<div id="dayCard" class="card">
+  <div class="placeholder">生後日数がここに表示されます</div>
+</div>
+
+<div id="weekCard" class="card">
+  <div class="placeholder">生後週数がここに表示されます</div>
+</div>
+
+<div id="monthCard" class="card">
+  <div class="placeholder">生後月齢がここに表示されます</div>
 </div>
 
 <script>
@@ -110,10 +124,17 @@ function calculate() {
     months--;
   }
 
-  document.getElementById("result").innerHTML =
-    `生後 <strong>${days}</strong> 日<br>
-     生後 <strong>${weeks}</strong> 週 ${extraDays} 日<br>
-     生後 <strong>${months}</strong> ヶ月`;
+  document.getElementById("dayCard").innerHTML =
+    `<div class="label">生後日数</div>
+     <div class="value">${days} 日</div>`;
+
+  document.getElementById("weekCard").innerHTML =
+    `<div class="label">生後週数</div>
+     <div class="value">${weeks} 週 ${extraDays} 日</div>`;
+
+  document.getElementById("monthCard").innerHTML =
+    `<div class="label">生後月齢</div>
+     <div class="value">${months} ヶ月</div>`;
 }
 </script>
 
