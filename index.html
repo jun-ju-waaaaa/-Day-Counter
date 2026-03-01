@@ -6,12 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  /* 背景・文字・カード色を変数化して統一管理 */
+  /* 色を変数化して背景とカードを連動させる */
   :root {
     --bg: #fafafa;
     --text: #111;
     --card: #e5e5e5; /* 背景より少し濃い */
     --input-bg: #f0f0f0;
+    --border: #ccc;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -20,6 +21,7 @@
       --text: #f5f5f5;
       --card: #1e1e1e; /* 背景より少し明るい濃いグレー */
       --input-bg: #1a1a1a;
+      --border: #333;
     }
   }
 
@@ -39,35 +41,42 @@
     font-weight: 600;
   }
 
-  /* カレンダー選択バー（input[type=date]）のはみ出し防止 */
-  input[type="date"] {
+  /* 入力欄とボタンの幅・余白・箱モデルを完全統一 */
+  input[type="date"],
+  button {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     padding: 16px;
     font-size: 1.2rem;
-    margin-bottom: 14px;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border);
+  }
+
+  /* カレンダー選択バーの背景色を背景に準拠 */
+  input[type="date"] {
     background: var(--input-bg);
     color: var(--text);
   }
 
-  /* iOS Safari のカレンダーアイコンも背景準拠 */
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.7); /* ダークモードで白くなる */
+  /* iOS Safari のカレンダーアイコンの余白対策 */
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-clear-button {
+    padding: 0;
   }
 
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    margin: 0;
+    filter: invert(0.7); /* ダークモードで白く見える */
+  }
+
+  /* ボタンだけ背景色を上書き */
   button {
-    width: 100%;
-    padding: 16px;
-    font-size: 1.2rem;
     background: #0066ff;
     color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
     font-weight: 600;
+    border: 1px solid #0066ff;
   }
 
   /* カード幅を完全に統一（100%固定） */
