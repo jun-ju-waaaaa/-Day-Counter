@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  /* 色を変数化して背景とカードを連動させる */
   :root {
     --bg: #fafafa;
     --text: #111;
@@ -40,66 +39,68 @@
     font-weight: 600;
   }
 
-  /* 入力欄とボタンの幅を完全に揃える（最小限の修正） */
-  .form-wrapper {
-  padding: 0 16px;
-  overflow: hidden; /* ← 右のはみ出しを切る */
-}
+  /* 日付入力欄のラッパー */
+  .date-wrapper {
+    position: relative;
+    margin-bottom: 12px;
+  }
 
-input[type="date"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 16px;
-  margin-bottom: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc; /* ← iOS の誤差防止 */
-  height: 52px;        /* ← 高さを固定 */
-  padding-top: 0;      /* ← 内部UIの高さ変化を吸収 */
-  padding-bottom: 0;   /* ← 内部UIの高さ変化を吸収 */
-  line-height: 52px;   /* ← テキストを中央に寄せる */
-  border-radius: 8px;
-}
+  /* プレースホルダー文字 */
+  .date-placeholder {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    font-size: 16px;
+    opacity: 0.7;
+    z-index: 2;
+  }
 
-button {
-  width: 100%;
-  box-sizing: border-box;
-  height: 52px;        /* ← input と同じ高さに固定 */
-  line-height: 52px;   /* ← テキストを中央に */
-  padding: 0 16px;     /* ← 横だけ余白にする */
-  font-size: 16px;
-  border-radius: 8px;
-}
-
-
-  /* カレンダー選択バーの背景色を背景に準拠 */
+  /* 日付入力欄 */
   input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid var(--border);
     background: var(--input-bg);
     color: var(--text);
-    border: 1px solid var(--border);
-
-    /* ← これだけが今回の“決定打” */
+    height: 52px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 52px;
+    border-radius: 8px;
+    z-index: 1; /* ← プレースホルダーより下 */
+    position: relative;
     padding-right: 0 !important;
   }
 
-  /* iOS Safari の余白対策（必要最低限） */
   input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
     padding: 0;
     filter: invert(0.7);
   }
 
-  /* ボタンのデザインは前のまま */
+  /* ボタン */
   button {
+    width: 100%;
+    box-sizing: border-box;
+    height: 52px;
+    line-height: 52px;
+    padding: 0 16px;
+    font-size: 16px;
+    border-radius: 8px;
     background: #0066ff;
     color: white;
     font-weight: 600;
     border: 1px solid #0066ff;
   }
 
-  /* カードのデザインも前のまま */
+  /* カード */
   .card {
     width: 100%;
     box-sizing: border-box;
@@ -112,9 +113,7 @@ button {
     line-height: 1.9;
     color: var(--text);
     height: 100px; /* ← 完全固定 */
-    overflow: hidden; /* ← 内容が溢れないように */
-}
-
+    overflow: hidden;
   }
 
   .label {
@@ -132,21 +131,6 @@ button {
     opacity: 0.6;
     font-size: 1.2rem;
   }
-  .date-wrapper {
-  position: relative;
-}
-
-.date-placeholder {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
-  pointer-events: none;
-  font-size: 16px;
-  opacity: 0.7;
-  z-index: 2;
-}
 </style>
 </head>
 <body>
@@ -159,6 +143,7 @@ button {
     日付を選択してください
   </div>
 </div>
+
 <button onclick="calculate()">計算する</button>
 
 <div id="dayCard" class="card">
@@ -174,6 +159,7 @@ button {
 </div>
 
 <script>
+/* プレースホルダー制御 */
 const birthInput = document.getElementById("birthDate");
 const birthPlaceholder = document.getElementById("birthPlaceholder");
 
@@ -185,9 +171,9 @@ birthInput.addEventListener("change", () => {
   }
 });
 
+/* 計算処理 */
 function calculate() {
-  
-  const birthValue = document.getElementById("birthDate").value;
+  const birthValue = birthInput.value;
   if (!birthValue) return;
 
   const birth = new Date(birthValue);
