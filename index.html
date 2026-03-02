@@ -132,6 +132,21 @@ button {
     opacity: 0.6;
     font-size: 1.2rem;
   }
+  .date-wrapper {
+  position: relative;
+}
+
+.date-placeholder {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+  font-size: 16px;
+  opacity: 0.7;
+  z-index: 2;
+}
 </style>
 </head>
 <body>
@@ -159,7 +174,19 @@ button {
 </div>
 
 <script>
+const birthInput = document.getElementById("birthDate");
+const birthPlaceholder = document.getElementById("birthPlaceholder");
+
+birthInput.addEventListener("change", () => {
+  if (birthInput.value) {
+    birthPlaceholder.style.display = "none";
+  } else {
+    birthPlaceholder.style.display = "block";
+  }
+});
+
 function calculate() {
+  
   const birthValue = document.getElementById("birthDate").value;
   if (!birthValue) return;
 
