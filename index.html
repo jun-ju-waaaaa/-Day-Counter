@@ -138,7 +138,12 @@ button {
 
 <h1>赤ちゃん 月齢・週齢・日齢 計算ツール</h1>
 
-<input type="date" id="birthDate">
+<div class="date-wrapper">
+  <input type="date" id="birthDate">
+  <div class="date-placeholder" id="birthPlaceholder">
+    日付を選択してください
+  </div>
+</div>
 <button onclick="calculate()">計算する</button>
 
 <div id="dayCard" class="card">
