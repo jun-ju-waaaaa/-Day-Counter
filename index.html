@@ -63,15 +63,16 @@ input[type="date"] {
   border-radius: 8px;
 }
 
-
 button {
   width: 100%;
   box-sizing: border-box;
-  padding: 16px;
+  height: 52px;        /* ← input と同じ高さに固定 */
+  line-height: 52px;   /* ← テキストを中央に */
+  padding: 0 16px;     /* ← 横だけ余白にする */
   font-size: 16px;
   border-radius: 8px;
-  height: 52px;
 }
+
 
   /* カレンダー選択バーの背景色を背景に準拠 */
   input[type="date"] {
