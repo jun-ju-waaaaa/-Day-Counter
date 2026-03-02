@@ -42,12 +42,14 @@
 
   /* 入力欄とボタンの幅を完全に揃える（最小限の修正） */
   input[type="date"] {
-  box-sizing: border-box;
   width: 100%;
-  padding: 16px;        /* ← 高さを揃える */
-  margin-bottom: 12px;  /* ← 隙間 */
-  font-size: 16px;      /* ← iPhone の自動ズーム防止 */
+  max-width: 100%; /* ← 右のはみ出し防止 */
+  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: 12px;
+  font-size: 16px;
 }
+
 
 .form-wrapper {
   padding: 0 16px;
