@@ -56,7 +56,10 @@ input[type="date"] {
   margin-bottom: 12px;
   font-size: 16px;
   border: 1px solid #ccc; /* ← iOS の誤差防止 */
-  height: 52px; /* ← 高さを固定して変化を止める */
+  height: 52px;        /* ← 高さを固定 */
+  padding-top: 0;      /* ← 内部UIの高さ変化を吸収 */
+  padding-bottom: 0;   /* ← 内部UIの高さ変化を吸収 */
+  line-height: 52px;   /* ← テキストを中央に寄せる */
 }
 
 
