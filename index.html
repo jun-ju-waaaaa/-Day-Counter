@@ -41,22 +41,23 @@
   }
 
   /* 入力欄とボタンの幅を完全に揃える（最小限の修正） */
-  input[type="date"] {
+  .form-wrapper {
+  padding: 0 16px;
+  overflow: hidden; /* ← 右のはみ出しを切る */
+}
+
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   padding: 16px;
   margin-bottom: 12px;
   font-size: 16px;
-  max-width: 100%;
-  -webkit-appearance: none;
+  border: 1px solid #ccc; /* ← iOS の誤差防止 */
 }
 
-}
-
-
-.form-wrapper {
-  padding: 0 16px;
-}
 
 button {
   width: 100%;
