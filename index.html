@@ -184,16 +184,6 @@ function calculate() {
   document.getElementById("monthCard").innerHTML =
     `<div class="label">生後月齢</div>
      <div class="value">${months} ヶ月</div>`;
-    
-    // 計算後に高さを固定する処理
-["dayCard", "weekCard", "monthCard"].forEach(id => {
-  const el = document.getElementById(id);
-
-  el.style.height = "auto";      // ← まず高さをリセット
-  const h = el.offsetHeight;     // ← 計算後の高さを取得
-  el.style.height = h + "px";    // ← その高さで固定
-});
-
 }
 </script>
 
