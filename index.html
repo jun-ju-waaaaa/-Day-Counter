@@ -1,209 +1,220 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>赤ちゃん 月齢・週齢・日齢 計算ツール</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>赤ちゃんの月齢・週齢・日齢を自動計算｜シンプルで見やすい育児ツール</title>
+  <meta name="description" content="赤ちゃんの生年月日を入力するだけで、月齢・週齢・日齢を自動で計算！スマホ対応のシンプルな育児サポートツールです。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-  :root {
-    --bg: #fafafa;
-    --text: #111;
-    --card: #e5e5e5;
-    --input-bg: #f0f0f0;
-    --border: #ccc;
+  <!-- 構造化データ（JSON-LD） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "赤ちゃん月齢・週齢・日齢 計算ツール",
+    "url": "https://jun-ju-waaaaa.github.io/-Day-Counter/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "description": "赤ちゃんの生年月日から月齢・週齢・日齢を自動で計算する無料ツール。スマホ対応で育児をサポートします。"
   }
+  </script>
 
-  @media (prefers-color-scheme: dark) {
+  <style>
     :root {
-      --bg: #121212;
-      --text: #f5f5f5;
-      --card: #1e1e1e;
-      --input-bg: #1a1a1a;
-      --border: #333;
+      --bg: #fafafa;
+      --text: #111;
+      --card: #e5e5e5;
+      --input-bg: #f0f0f0;
+      --border: #ccc;
     }
-  }
 
-  body {
-    font-family: system-ui, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: var(--bg);
-    color: var(--text);
-  }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #f5f5f5;
+        --card: #1e1e1e;
+        --input-bg: #1a1a1a;
+        --border: #333;
+      }
+    }
 
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 600;
-  }
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-  /* 日付入力欄のラッパー */
-  .date-wrapper {
-    position: relative;
-    margin-bottom: 12px;
-  }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 600;
+    }
 
-  /* プレースホルダー文字 */
-  .date-placeholder {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #888;
-    pointer-events: none;
-    font-size: 16px;
-    opacity: 0.7;
-    z-index: 2;
-  }
+    h2 {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 500;
+      opacity: 0.8;
+    }
 
-  /* 日付入力欄 */
-  input[type="date"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 16px;
-    font-size: 16px;
-    border: 1px solid var(--border);
-    background: var(--input-bg);
-    color: var(--text);
-    height: 52px;
-    padding-top: 0;
-    padding-bottom: 0;
-    line-height: 52px;
-    border-radius: 8px;
-    z-index: 1; /* ← プレースホルダーより下 */
-    position: relative;
-    padding-right: 0 !important;
-  }
+    p {
+      text-align: center;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      opacity: 0.8;
+    }
 
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    margin: 0;
-    padding: 0;
-    filter: invert(0.7);
-  }
+    .date-wrapper {
+      position: relative;
+      margin-bottom: 12px;
+    }
 
-  /* ボタン */
-  button {
-    width: 100%;
-    box-sizing: border-box;
-    height: 52px;
-    line-height: 52px;
-    padding: 0 16px;
-    font-size: 16px;
-    border-radius: 8px;
-    background: #0066ff;
-    color: white;
-    font-weight: 600;
-    border: 1px solid #0066ff;
-  }
+    .date-placeholder {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      pointer-events: none;
+      font-size: 16px;
+      opacity: 0.7;
+      z-index: 2;
+    }
 
-  /* カード */
-  .card {
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 18px;
-    padding: 22px;
-    background: var(--card);
-    border-radius: 14px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-    font-size: 1.3rem;
-    line-height: 1.9;
-    color: var(--text);
-    height: 130px; /* ← 完全固定 */
-    overflow: hidden;
-  }
+    input[type="date"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 16px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      height: 52px;
+      line-height: 52px;
+      border-radius: 8px;
+      z-index: 1;
+      position: relative;
+    }
 
-  .label {
-    font-size: 1.1rem;
-    opacity: 0.7;
-  }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      margin: 0;
+      padding: 0;
+      filter: invert(0.7);
+    }
 
-  .value {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-top: 6px;
-  }
+    button {
+      width: 100%;
+      box-sizing: border-box;
+      height: 52px;
+      line-height: 52px;
+      padding: 0 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      background: #0066ff;
+      color: white;
+      font-weight: 600;
+      border: 1px solid #0066ff;
+    }
 
-  .placeholder {
-    opacity: 0.6;
-    font-size: 1.2rem;
-  }
-</style>
+    .card {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 18px;
+      padding: 22px;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      font-size: 1.3rem;
+      line-height: 1.9;
+      color: var(--text);
+      height: 130px;
+      overflow: hidden;
+    }
+
+    .label {
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .placeholder {
+      opacity: 0.6;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
 
-<h1>赤ちゃん 月齢・週齢・日齢 計算ツール</h1>
+  <h1>赤ちゃん 月齢・週齢・日齢 計算ツール</h1>
+  <h2>赤ちゃんの成長を日数でしっかり把握</h2>
+  <p>生年月日を入力するだけで、現在の月齢・週齢・日齢を自動で計算できます。育児日記や健診の記録にも便利！</p>
 
-<div class="date-wrapper">
-  <input type="date" id="birthDate">
-  <div class="date-placeholder" id="birthPlaceholder">
-    カレンダーから生年月日を選んでください
+  <div class="date-wrapper">
+    <input type="date" id="birthDate">
+    <div class="date-placeholder" id="birthPlaceholder">
+      カレンダーから生年月日を選んでください
+    </div>
   </div>
-</div>
 
-<button onclick="calculate()">計算する</button>
+  <button onclick="calculate()">計算する</button>
 
-<div id="dayCard" class="card">
-  <div class="placeholder">生後日数がここに表示されます</div>
-</div>
+  <div id="dayCard" class="card">
+    <div class="placeholder">生後日数がここに表示されます</div>
+  </div>
 
-<div id="weekCard" class="card">
-  <div class="placeholder">生後週数がここに表示されます</div>
-</div>
+  <div id="weekCard" class="card">
+    <div class="placeholder">生後週数がここに表示されます</div>
+  </div>
 
-<div id="monthCard" class="card">
-  <div class="placeholder">生後月齢がここに表示されます</div>
-</div>
+  <div id="monthCard" class="card">
+    <div class="placeholder">生後月齢がここに表示されます</div>
+  </div>
 
-<script>
-/* プレースホルダー制御 */
-const birthInput = document.getElementById("birthDate");
-const birthPlaceholder = document.getElementById("birthPlaceholder");
+  <script>
+    const birthInput = document.getElementById("birthDate");
+    const birthPlaceholder = document.getElementById("birthPlaceholder");
 
-birthInput.addEventListener("change", () => {
-  if (birthInput.value) {
-    birthPlaceholder.style.display = "none";
-  } else {
-    birthPlaceholder.style.display = "block";
-  }
-});
+    birthInput.addEventListener("change", () => {
+      birthPlaceholder.style.display = birthInput.value ? "none" : "block";
+    });
 
-/* 計算処理 */
-function calculate() {
-  const birthValue = birthInput.value;
-  if (!birthValue) return;
+    function calculate() {
+      const birthValue = birthInput.value;
+      if (!birthValue) return;
 
-  const birth = new Date(birthValue);
-  const today = new Date();
+      const birth = new Date(birthValue);
+      const today = new Date();
 
-  const diffTime = today - birth;
-  const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const diffTime = today - birth;
+      const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const weeks = Math.floor(days / 7);
+      const extraDays = days % 7;
 
-  const weeks = Math.floor(days / 7);
-  const extraDays = days % 7;
+      let months = (today.getFullYear() - birth.getFullYear()) * 12 +
+                   (today.getMonth() - birth.getMonth());
+      if (today.getDate() < birth.getDate()) months--;
 
-  let months = (today.getFullYear() - birth.getFullYear()) * 12 +
-               (today.getMonth() - birth.getMonth());
-  if (today.getDate() < birth.getDate()) {
-    months--;
-  }
+      document.getElementById("dayCard").innerHTML =
+        `<div class="label">生後日数</div><div class="value">${days} 日</div>`;
 
-  document.getElementById("dayCard").innerHTML =
-    `<div class="label">生後日数</div>
-     <div class="value">${days} 日</div>`;
+      document.getElementById("weekCard").innerHTML =
+        `<div class="label">生後週数</div><div class="value">${weeks} 週 ${extraDays} 日</div>`;
 
-  document.getElementById("weekCard").innerHTML =
-    `<div class="label">生後週数</div>
-     <div class="value">${weeks} 週 ${extraDays} 日</div>`;
-
-  document.getElementById("monthCard").innerHTML =
-    `<div class="label">生後月齢</div>
-     <div class="value">${months} ヶ月</div>`;
-}
-</script>
+      document.getElementById("monthCard").innerHTML =
+        `<div class="label">生後月齢</div><div class="value">${months} ヶ月</div>`;
+    }
+  </script>
 
 </body>
 </html>
