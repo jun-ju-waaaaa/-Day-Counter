@@ -155,11 +155,27 @@
       opacity: 0.6;
       font-size: 1.2rem;
     }
+    .title-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* アイコンと文字の間隔 */
+}
+
+.title-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px; /* 角丸にしたい場合 */
+}
+
   </style>
 </head>
 <body>
 
-  <h1>赤ちゃん生まれて何日？</h1>
+  <h1 class="title-with-icon">
+  <img src="favicon-32x32.png" alt="" class="title-icon">
+  赤ちゃん 生まれて何日？
+</h1>
   <h2>生年月日を入力するだけで、現在の月齢・週齢・日齢を自動で計算できます。</h2>
   <p>広告なしで見やすい。<br>ダークモード対応で寝かしつけ中でも使いやすい。</p>
 
