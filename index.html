@@ -124,6 +124,12 @@
       font-weight: 600;
       border: 1px solid #0066ff;
     }
+    button {
+  border: 1px solid var(--border) !important;
+}
+button.selected {
+  border: 1px solid #0066ff !important;
+}
 
     .card {
       width: 100%;
@@ -190,15 +196,17 @@ button:focus {
   </div>
 
 <div style="display:flex; gap:8px; margin-bottom:12px;">
+
+    <button type="button" id="excludeBtn" onclick="setMode(false)"
+    style="flex:1; background:#0066ff; color:white;">
+    初日を含めない
+  </button>
+
   <button type="button" id="includeBtn" onclick="setMode(true)"
     style="flex:1; background:var(--input-bg); color:var(--text);">
     初日を含める
   </button>
 
-  <button type="button" id="excludeBtn" onclick="setMode(false)"
-    style="flex:1; background:#0066ff; color:white;">
-    初日を含めない
-  </button>
 </div>
   <button onclick="calculate()">計算する</button>
 
@@ -226,16 +234,16 @@ let includeFirstDay = false; // デフォルト：初日を含めない
 function setMode(mode) {
   includeFirstDay = mode;
 
-  // includeBtn（初日を含める）
+  includeBtn.classList.toggle("selected", mode);
+  excludeBtn.classList.toggle("selected", !mode);
+
   includeBtn.style.background = mode ? "#0066ff" : "var(--input-bg)";
   includeBtn.style.color = mode ? "white" : "var(--text)";
-  includeBtn.style.border = mode ? "1px solid #0066ff" : "1px solid var(--border)";
 
-  // excludeBtn（初日を含めない）
   excludeBtn.style.background = mode ? "var(--input-bg)" : "#0066ff";
   excludeBtn.style.color = mode ? "var(--text)" : "white";
-  excludeBtn.style.border = mode ? "1px solid var(--border)" : "1px solid #0066ff";
 }
+
     function calculate() {
   const birthValue = birthInput.value;
   if (!birthValue) return;
@@ -267,6 +275,7 @@ function setMode(mode) {
   document.getElementById("monthCard").innerHTML =
     `<div class="label">生後月齢</div><div class="value">${months} ヶ月</div>`;
 }
+
   </script>
 
 </body>
