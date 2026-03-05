@@ -228,12 +228,16 @@ function setMode(mode) {
     mode ? "#0066ff" : "var(--input-bg)";
   document.getElementById("includeBtn").style.color =
     mode ? "white" : "var(--text)";
+  document.getElementById("includeBtn").style.border =
+    mode ? "1px solid #0066ff" : "1px solid var(--border)";
 
   // excludeBtn（初日を含めない）
   document.getElementById("excludeBtn").style.background =
     mode ? "var(--input-bg)" : "#0066ff";
   document.getElementById("excludeBtn").style.color =
     mode ? "var(--text)" : "white";
+  document.getElementById("excludeBtn").style.border =
+    mode ? "1px solid var(--border)" : "1px solid #0066ff";
 }
     function calculate() {
   const birthValue = birthInput.value;
