@@ -186,13 +186,13 @@
     </div>
   </div>
 
-  <div style="display:flex; gap:8px; margin-bottom:12px;">
-  <button type="button" id="includeBtn" onclick="setMode(true)" 
-    style="flex:1; background:#ccc; color:#333;">
+<div style="display:flex; gap:8px; margin-bottom:12px;">
+  <button type="button" id="includeBtn" onclick="setMode(true)"
+    style="flex:1; background:var(--input-bg); color:var(--text);">
     初日を含める
   </button>
 
-  <button type="button" id="excludeBtn" onclick="setMode(false)" 
+  <button type="button" id="excludeBtn" onclick="setMode(false)"
     style="flex:1; background:#0066ff; color:white;">
     初日を含めない
   </button>
@@ -223,12 +223,17 @@ let includeFirstDay = false; // デフォルト：初日を含めない
 function setMode(mode) {
   includeFirstDay = mode;
 
-  // ボタンの見た目切り替え
-  document.getElementById("includeBtn").style.background = mode ? "#0066ff" : "#ccc";
-  document.getElementById("includeBtn").style.color = mode ? "white" : "#333";
+  // includeBtn（初日を含める）
+  document.getElementById("includeBtn").style.background =
+    mode ? "#0066ff" : "var(--input-bg)";
+  document.getElementById("includeBtn").style.color =
+    mode ? "white" : "var(--text)";
 
-  document.getElementById("excludeBtn").style.background = mode ? "#ccc" : "#0066ff";
-  document.getElementById("excludeBtn").style.color = mode ? "#333" : "white";
+  // excludeBtn（初日を含めない）
+  document.getElementById("excludeBtn").style.background =
+    mode ? "var(--input-bg)" : "#0066ff";
+  document.getElementById("excludeBtn").style.color =
+    mode ? "var(--text)" : "white";
 }
     function calculate() {
   const birthValue = birthInput.value;
