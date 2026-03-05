@@ -167,7 +167,10 @@
   height: 28px;
   border-radius: 6px; /* 角丸にしたい場合 */
 }
-
+button:focus {
+  outline: none;
+  border: 1px solid var(--border);
+}
   </style>
 </head>
 <body>
@@ -224,20 +227,14 @@ function setMode(mode) {
   includeFirstDay = mode;
 
   // includeBtn（初日を含める）
-  document.getElementById("includeBtn").style.background =
-    mode ? "#0066ff" : "var(--input-bg)";
-  document.getElementById("includeBtn").style.color =
-    mode ? "white" : "var(--text)";
-  document.getElementById("includeBtn").style.border =
-    mode ? "1px solid #0066ff" : "1px solid var(--border)";
+  includeBtn.style.background = mode ? "#0066ff" : "var(--input-bg)";
+  includeBtn.style.color = mode ? "white" : "var(--text)";
+  includeBtn.style.border = mode ? "1px solid #0066ff" : "1px solid var(--border)";
 
   // excludeBtn（初日を含めない）
-  document.getElementById("excludeBtn").style.background =
-    mode ? "var(--input-bg)" : "#0066ff";
-  document.getElementById("excludeBtn").style.color =
-    mode ? "var(--text)" : "white";
-  document.getElementById("excludeBtn").style.border =
-    mode ? "1px solid var(--border)" : "1px solid #0066ff";
+  excludeBtn.style.background = mode ? "var(--input-bg)" : "#0066ff";
+  excludeBtn.style.color = mode ? "var(--text)" : "white";
+  excludeBtn.style.border = mode ? "1px solid var(--border)" : "1px solid #0066ff";
 }
     function calculate() {
   const birthValue = birthInput.value;
