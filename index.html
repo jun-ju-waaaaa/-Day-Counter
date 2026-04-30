@@ -586,7 +586,9 @@
     /* 楽天モーションウィジェット */
     .rakuten-widget-wrap {
       margin-bottom: 16px;
-      overflow: hidden;
+      overflow: visible;
+      width: 100%;
+      text-align: center;
     }
 
     .ad-title {
@@ -599,27 +601,30 @@
       letter-spacing: 0.05em;
     }
 
-    /* ウィジェットをコンテナ幅に合わせてスケール */
-    .rakuten-widget-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    /* ウィジェットをコンテナ幅に合わせて表示 */
+    .rakuten-widget-wrap > div {
+      display: inline-block;
+      max-width: 100%;
+      overflow-x: auto;
     }
 
-    .rakuten-widget-wrap > div,
     .rakuten-widget-wrap iframe,
     .rakuten-widget-wrap table {
       max-width: 100% !important;
-      width: 100% !important;
-      height: auto !important;
+      display: block;
+      margin: 0 auto;
     }
 
     @media (max-width: 480px) {
-      .rakuten-widget-wrap > div,
+      .rakuten-widget-wrap > div {
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+      }
+
       .rakuten-widget-wrap iframe,
       .rakuten-widget-wrap table {
-        transform: scale(0.9);
-        transform-origin: center;
+        max-width: 100% !important;
+        width: 100%;
       }
     }
 
