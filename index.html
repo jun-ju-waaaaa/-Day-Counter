@@ -583,84 +583,27 @@
       animation: fadeIn 0.3s ease forwards;
     }
 
-    /* 楽天アフィリエイト広告エリア */
-    .ad-section {
-      display: none;
+    /* 楽天モーションウィジェット */
+    .rakuten-widget-wrap {
       margin-bottom: 16px;
+      overflow: hidden;
     }
-
-    .ad-section.visible { display: block; }
 
     .ad-title {
       font-size: 0.75rem;
       color: var(--text-sub);
       font-weight: 500;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       text-align: center;
       opacity: 0.7;
       letter-spacing: 0.05em;
     }
 
-    .ad-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .ad-item {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 12px 10px;
-      text-align: center;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 2px 8px var(--shadow);
-    }
-
-    .ad-item:active {
-      transform: scale(0.97);
-      box-shadow: 0 1px 4px var(--shadow);
-    }
-
-    .ad-item-emoji {
-      font-size: 1.8rem;
-      line-height: 1;
-    }
-
-    .ad-item-name {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-    }
-
-    .ad-item-sub {
-      font-size: 0.7rem;
-      color: var(--text-sub);
-      line-height: 1.3;
-    }
-
-    .ad-item-btn {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #bf0000;
-      background: #fff0f0;
-      border-radius: 20px;
-      padding: 3px 10px;
-      margin-top: 2px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .ad-item-btn {
-        color: #ff7eb3;
-        background: #2a1a2e;
-      }
+    /* ウィジェットをコンテナ幅に合わせてスケール */
+    .rakuten-widget-wrap > div,
+    .rakuten-widget-wrap iframe,
+    .rakuten-widget-wrap table {
+      max-width: 100% !important;
     }
 
     /* フッター */
@@ -740,10 +683,11 @@
       </button>
     </div>
 
-    <!-- 楽天アフィリエイト広告 -->
-    <div class="ad-section" id="adSection" aria-label="おすすめ商品">
-      <div class="ad-title">📦 この時期のおすすめアイテム（楽天）</div>
-      <div class="ad-grid" id="adGrid"></div>
+    <!-- 楽天モーションウィジェット -->
+    <div class="rakuten-widget-wrap" id="rakutenWidget">
+      <div class="ad-title">📦 おすすめアイテム（楽天）</div>
+      <script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="53546fe4.72a9fb90.53546fe5.b85c8083";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="468x160";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1777551439850";</script>
+      <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
     </div>
 
     <!-- ✅ PWAバナー -->
@@ -801,78 +745,6 @@
   </footer>
 
   <script>
-    // =====================
-    // 楽天アフィリエイト広告データ
-    // ※ a_id 設定済み: 535431d2.118b7da3.535431d3.739022d3
-    // ※ 各URLは楽天アフィリエイトリンク生成ツールで作成したリンクに差し替えてください
-    // =====================
-    const YOUR_AFFILIATE_ID = '535431d2.118b7da3.535431d3.739022d3'; // ← ここを変更
-
-    const adData = [
-      {
-        maxDays: 28,
-        items: [
-          { emoji: '🍼', name: '授乳・搾乳グッズ',  sub: '母乳・ミルク育児に',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E6%8E%88%E4%B9%B3%E3%82%B0%E3%83%83%E3%82%BA%2F` },
-          { emoji: '👶', name: 'おむつ（新生児用）', sub: '肌にやさしいおむつ',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%81%8A%E3%82%80%E3%81%A4%E6%96%B0%E7%94%9F%E5%85%90%2F` },
-          { emoji: '🤱', name: '抱っこ紐・スリング', sub: '新生児から使える',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E6%8A%B1%E3%81%A3%E3%81%93%E7%B4%90%E6%96%B0%E7%94%9F%E5%85%90%2F` },
-          { emoji: '🧴', name: 'ベビースキンケア',   sub: '乾燥・湿疹対策に',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%82%B9%E3%82%AD%E3%83%B3%E3%82%B1%E3%82%A2%2F` },
-        ],
-      },
-      {
-        maxDays: 84,
-        items: [
-          { emoji: '🛁', name: 'ベビーバス',         sub: '沐浴・入浴グッズ',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%83%90%E3%82%B9%2F` },
-          { emoji: '🎵', name: 'ベビーメリー',        sub: '視覚・聴覚を刺激',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%83%A1%E3%83%AA%E3%83%BC%2F` },
-          { emoji: '📷', name: 'ベビーモニター',      sub: '夜間の見守りに',       url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%2F` },
-          { emoji: '🧸', name: 'おくるみ・ガーゼ',   sub: '肌触りやさしい素材',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%81%8A%E3%81%8F%E3%82%8B%E3%81%BF%E3%82%AC%E3%83%BC%E3%82%BC%2F` },
-        ],
-      },
-      {
-        maxDays: 180,
-        items: [
-          { emoji: '🪑', name: 'バウンサー',          sub: '背中スイッチ対策に',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%90%E3%82%A6%E3%83%B3%E3%82%B5%E3%83%BC%E3%83%99%E3%83%93%E3%83%BC%2F` },
-          { emoji: '🎀', name: 'プレイマット',         sub: '腹ばい・遊びに',       url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%97%E3%83%AC%E3%82%A4%E3%83%9E%E3%83%83%E3%83%88%E3%83%99%E3%83%93%E3%83%BC%2F` },
-          { emoji: '🥄', name: '離乳食グッズ',        sub: '5〜6ヶ月からの準備',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E9%9B%A2%E4%B9%B3%E9%A3%9F%E3%82%B0%E3%83%83%E3%82%BA%2F` },
-          { emoji: '🛼', name: 'ベビーカー',           sub: 'お散歩・外出に',       url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%82%AB%E3%83%BC%2F` },
-        ],
-      },
-      {
-        maxDays: 365,
-        items: [
-          { emoji: '🪑', name: 'ベビーハイチェア',    sub: '離乳食・食事椅子',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%83%8F%E3%82%A4%E3%83%81%E3%82%A7%E3%82%A2%2F` },
-          { emoji: '🏠', name: 'ベビーゲート',        sub: '安全対策・転落防止',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%99%E3%83%93%E3%83%BC%E3%82%B2%E3%83%BC%E3%83%88%2F` },
-          { emoji: '🧩', name: '知育おもちゃ',        sub: '感触・音・形で遊ぶ',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E7%9F%A5%E8%82%B2%E7%8E%A9%E5%85%B7%E3%83%99%E3%83%93%E3%83%BC%2F` },
-          { emoji: '🍲', name: '離乳食レトルト',      sub: '忙しい時の時短に',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E9%9B%A2%E4%B9%B3%E9%A3%9F%E3%83%AC%E3%83%88%E3%83%AB%E3%83%88%2F` },
-        ],
-      },
-      {
-        maxDays: Infinity,
-        items: [
-          { emoji: '📚', name: '知育・絵本',           sub: '言葉・思考力を育む',   url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E5%B9%BC%E5%85%90%E7%B5%B5%E6%9C%AC%2F` },
-          { emoji: '🎨', name: 'お絵かき・工作',       sub: '指先・創造力を鍛える', url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E5%B9%BC%E5%85%90%E3%81%8A%E7%B5%B5%E3%81%8B%E3%81%8D%2F` },
-          { emoji: '🥣', name: '幼児食・スナック',     sub: '栄養バランスよく',     url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E5%B9%BC%E5%85%90%E9%A3%9F%2F` },
-          { emoji: '👟', name: 'ファーストシューズ',   sub: 'ヨチヨチ歩きに',       url: `https://hb.afl.rakuten.co.jp/hgc/${YOUR_AFFILIATE_ID}/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%BA%2F` },
-        ],
-      },
-    ];
-
-    function renderAds(days) {
-      const section = document.getElementById('adSection');
-      const grid = document.getElementById('adGrid');
-      const data = adData.find(d => days < d.maxDays);
-      if (!data) { section.classList.remove('visible'); return; }
-
-      grid.innerHTML = data.items.map(item => `
-        <a href="${item.url}" target="_blank" rel="noopener sponsored" class="ad-item">
-          <span class="ad-item-emoji">${item.emoji}</span>
-          <span class="ad-item-name">${item.name}</span>
-          <span class="ad-item-sub">${item.sub}</span>
-          <span class="ad-item-btn">楽天で見る →</span>
-        </a>
-      `).join('');
-      section.classList.add('visible');
-    }
-
     // =====================
     // 状態管理
     // =====================
@@ -1027,9 +899,6 @@
 
       // 節目
       renderMilestones(days);
-
-      // 楽天アフィリエイト広告
-      renderAds(days);
 
       // 発達メッセージ
       const devCard = document.getElementById('devCard');
