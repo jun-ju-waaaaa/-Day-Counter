@@ -600,10 +600,27 @@
     }
 
     /* ウィジェットをコンテナ幅に合わせてスケール */
+    .rakuten-widget-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .rakuten-widget-wrap > div,
     .rakuten-widget-wrap iframe,
     .rakuten-widget-wrap table {
       max-width: 100% !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    @media (max-width: 480px) {
+      .rakuten-widget-wrap > div,
+      .rakuten-widget-wrap iframe,
+      .rakuten-widget-wrap table {
+        transform: scale(0.9);
+        transform-origin: center;
+      }
     }
 
     /* フッター */
