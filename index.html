@@ -683,6 +683,7 @@
   <main class="container">
 
     <!-- 入力エリア -->
+
     <div class="input-card">
       <label class="input-label" for="birthDate">赤ちゃんの生年月日</label>
       <div class="date-wrapper">
@@ -942,6 +943,9 @@
       lastDays = days;
       lastBirthValue = birthValue;
 
+      // ✅ 誕生日をローカル保存
+      try { localStorage.setItem('baby_birthdate', birthValue); } catch(e) {}
+
       const isNewborn = days < 28;
       const newbornBadge = isNewborn ? '<span class="newborn-badge">新生児</span>' : '';
 
@@ -1040,6 +1044,19 @@
       // 日付が選択されたら即計算（UX向上）
       if (this.value) calculate();
     });
+
+    // =====================
+    // 初期化：保存済み誕生日を復元
+    // =====================
+    (function init() {
+      try {
+        const saved = localStorage.getItem('baby_birthdate');
+        if (saved) {
+          document.getElementById('birthDate').value = saved;
+          calculate();
+        }
+      } catch(e) {}
+    })();
   </script>
 
 </body>
