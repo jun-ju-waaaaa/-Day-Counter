@@ -48,58 +48,68 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ 構造化データ: WebApplication + FAQ schema -->
+  <!-- ✅ 構造化データ: WebApplication schema -->
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "赤ちゃん 生後週数・月齢・日齢 計算カレンダー",
-      "url": "https://0-tools.com/-Day-Counter/",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "All",
-      "description": "赤ちゃんの生年月日から生後週数・月齢・日齢を自動で計算する無料ツール。スマホ対応で育児をサポートします。",
-      "offers": { "@type": "Offer", "price": "0" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "生後週数（週齢）の数え方は？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "生まれた日を0日目として、7日ごとに1週齢が増えます。生後7日目から生後1週、14日目から生後2週となります。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "「初日を含める」と「初日を含めない」の違いは？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "「初日を含める」は生まれた日を1日目として数え、「初日を含めない」は生まれた日を0日目として翌日を1日目とします。一般的には初日を含めない数え方が広く使われています。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "新生児はいつまでですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "新生児とは生後28日（生後4週間）未満の赤ちゃんを指します。このツールで生後日数が28日未満の場合は新生児期にあたります。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "月齢と週齢はどう違いますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "月齢は生まれた月を基準に「生後○ヶ月」と数えます。週齢（週数）は7日を1週として「生後○週○日」と数えます。乳幼児健診などでは月齢が、医療現場では週齢が使われることが多いです。"
-          }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "赤ちゃん 生後週数・月齢・日齢 計算カレンダー",
+    "url": "https://0-tools.com/-Day-Counter/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "description": "赤ちゃんの生年月日から生後週数・月齢・日齢を自動で計算する無料ツール。スマホ対応で育児をサポートします。",
+    "offers": { "@type": "Offer", "price": "0" }
+  }
+  </script>
+
+  <!-- ✅ 構造化データ: FAQPage schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "生後週数（週齢）の数え方は？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "生まれた日を0日目として、7日ごとに1週齢が増えます。生後7日目から生後1週、14日目から生後2週となります。"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "@type": "Question",
+        "name": "「初日を含める」と「初日を含めない」の違いは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "「初日を含める」は生まれた日を1日目として数え、「初日を含めない」は生まれた日を0日目として翌日を1日目とします。一般的には初日を含めない数え方が広く使われています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "新生児はいつまでですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "新生児とは生後28日（生後4週間）未満の赤ちゃんを指します。このツールで生後日数が28日未満の場合は新生児期にあたります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "月齢と週齢はどう違いますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "月齢は生まれた月を基準に「生後○ヶ月」と数えます。週齢（週数）は7日を1週として「生後○週○日」と数えます。乳幼児健診などでは月齢が、医療現場では週齢が使われることが多いです。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "お宮参りや百日祝いはいつですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "お宮参りは生後30〜31日目（男の子）または32〜33日目（女の子）が一般的です。百日祝い（お食い初め）は生後100日目が目安です。地域によって異なる場合があります。"
+        }
+      }
+    ]
+  }
   </script>
 
   <style>
@@ -586,9 +596,7 @@
     /* 楽天モーションウィジェット */
     .rakuten-widget-wrap {
       margin-bottom: 16px;
-      overflow: visible;
       width: 100%;
-      text-align: center;
     }
 
     .ad-title {
@@ -601,18 +609,34 @@
       letter-spacing: 0.05em;
     }
 
-    /* ウィジェットをコンテナ幅に合わせて表示 */
-    .rakuten-widget-wrap > div {
-      display: inline-block;
-      max-width: 100%;
+    /* スクロールコンテナ：ウィジェット固定幅をスワイプで見せる */
+    .rakuten-widget-scroll {
+      width: 100%;
       overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent2) transparent;
     }
 
-    .rakuten-widget-wrap iframe,
-    .rakuten-widget-wrap table {
-      max-width: 100% !important;
-      display: block;
-      margin: 0 auto;
+    .rakuten-widget-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .rakuten-widget-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .rakuten-widget-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent2);
+      border-radius: 4px;
+    }
+
+    /* 内側のdivは最小幅を確保して横スクロールを発生させる */
+    .rakuten-widget-inner {
+      display: inline-block;
+      min-width: 468px;
     }
 
     .rakuten-banner {
@@ -625,19 +649,6 @@
       height: auto;
       display: inline-block;
       border-radius: 14px;
-    }
-
-    @media (max-width: 480px) {
-      .rakuten-widget-wrap > div {
-        width: 100%;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .rakuten-widget-wrap iframe,
-      .rakuten-widget-wrap table {
-        max-width: 100% !important;
-        width: 100%;
-      }
     }
 
     /* フッター */
@@ -661,6 +672,13 @@
     <p class="subtitle">生年月日を入力するだけで、何週何日目かを自動で計算します</p>
     <p class="desc">ダークモード対応 ｜ 夜の授乳中も見やすい ｜ 無料</p>
   </header>
+
+  <!-- ✅ SEO: 静的テキストコンテンツ（JSに依存しない説明） -->
+  <div style="max-width:480px;margin:0 auto;padding:8px 16px 0;font-size:0.82rem;color:var(--text-sub);line-height:1.7;text-align:center;">
+    赤ちゃんの生年月日を入力するだけで、<strong>生後日数・生後週数・月齢</strong>を自動で計算します。
+    お宮参り・百日祝い・ハーフバースデーなど次の節目までの日数もすぐ確認できます。
+    スマホ・PCどちらでも動作する無料ツールです。
+  </div>
 
   <main class="container">
 
@@ -727,8 +745,12 @@
     <!-- 楽天モーションウィジェット -->
     <div class="rakuten-widget-wrap" id="rakutenWidget">
       <div class="ad-title">📦 おすすめアイテム（楽天）</div>
-      <script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="53546fe4.72a9fb90.53546fe5.b85c8083";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="468x160";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1777551439850";</script>
-      <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+      <div class="rakuten-widget-scroll">
+        <div class="rakuten-widget-inner">
+          <script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="53546fe4.72a9fb90.53546fe5.b85c8083";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="468x160";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1777551439850";</script>
+          <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+        </div>
+      </div>
     </div>
 
     <!-- ✅ PWAバナー -->
@@ -736,6 +758,18 @@
       <strong>📱 ホーム画面に追加</strong>すると、毎日すぐに開けます<br>
       Safariの場合：共有ボタン → 「ホーム画面に追加」
     </div>
+
+    <!-- ✅ SEOコンテンツ: 使い方（静的・JS不要） -->
+    <section class="seo-content" aria-labelledby="usage-title">
+      <h2 id="usage-title">ツールの使い方</h2>
+      <p>① 赤ちゃんの生年月日をカレンダーから選択します。<br>
+         ② 「初日を含める／含めない」を選択します（一般的には「含めない」）。<br>
+         ③「計算する」ボタンを押すと、生後日数・週数・月齢が表示されます。<br>
+         ④ 次のお宮参りや百日祝いまでの日数もあわせて確認できます。</p>
+
+      <h3>こんなときに役立ちます</h3>
+      <p>小児科の受診時に週齢・月齢を聞かれたとき／離乳食の開始時期を確認したいとき／お宮参りや百日祝いの日程を決めるとき／育児日記の記録をつけるとき</p>
+    </section>
 
     <!-- ✅ SEOコンテンツ: 数え方解説 -->
     <section class="seo-content" aria-labelledby="howto-title">
@@ -777,12 +811,17 @@
         <div class="faq-q">お宮参りや百日祝いのタイミングはいつですか？</div>
         <p class="faq-a">お宮参りは生後30〜31日目（男の子）または32〜33日目（女の子）が一般的とされています。百日祝い（お食い初め）は生後100日目が目安です。地域によって異なる場合があります。</p>
       </div>
+
+      <div class="faq-item">
+        <div class="faq-q">離乳食はいつから始めますか？</div>
+        <p class="faq-a">一般的に離乳食の開始は生後5〜6ヶ月が目安です。首がしっかり据わり、大人の食事に興味を示すようになったら始めるサインとされています。詳しくはかかりつけの小児科にご相談ください。</p>
+      </div>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <p>© 2025 赤ちゃん生後計算ツール｜無料</p>
+    <p>© 2025–2026 赤ちゃん生後計算ツール｜無料</p>
   </footer>
 
   <script>
