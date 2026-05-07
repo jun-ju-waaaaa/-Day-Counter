@@ -651,6 +651,80 @@
       border-radius: 14px;
     }
 
+    /* ページ内ナビゲーション */
+    .page-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 480px;
+      margin: 10px auto 0;
+      padding: 0 16px;
+    }
+
+    .page-nav-link {
+      font-size: 0.78rem;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .page-nav-link:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* 関連記事 */
+    .related-section {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 20px 18px;
+      margin-bottom: 16px;
+    }
+
+    .related-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .related-link-item {
+      display: block;
+      text-decoration: none;
+      padding: 12px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .related-link-item:hover {
+      border-color: var(--accent2);
+      background: var(--accent-light);
+    }
+
+    .related-link-title {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .related-link-desc {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-sub);
+    }
+
     /* フッター */
     .site-footer {
       text-align: center;
@@ -658,6 +732,16 @@
       color: var(--text-sub);
       padding: 0 16px 16px;
       opacity: 0.6;
+    }
+
+    .site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -679,6 +763,13 @@
     お宮参り・百日祝い・ハーフバースデーなど次の節目までの日数もすぐ確認できます。
     スマホ・PCどちらでも動作する無料ツールです。
   </div>
+
+  <!-- ページ内ナビゲーション -->
+  <nav class="page-nav" aria-label="ページ内ナビゲーション">
+    <a href="#usage-title" class="page-nav-link">使い方</a>
+    <a href="#howto-title" class="page-nav-link">数え方解説</a>
+    <a href="#faq-title" class="page-nav-link">よくある質問</a>
+  </nav>
 
   <main class="container">
 
@@ -819,10 +910,20 @@
       </div>
     </section>
 
+    <!-- 関連記事 -->
+    <section class="related-section" aria-labelledby="related-title">
+      <h2 id="related-title">関連記事</h2>
+      <a href="https://0-tools.com/blog/birth-day-counter-guide/" class="related-link-item">
+        <span class="related-link-title">赤ちゃんの生後日数・週数・月齢を無料で計算する方法</span>
+        <span class="related-link-desc">ツールの詳しい使い方と予防接種・健診スケジュールへの活用例を解説</span>
+      </a>
+    </section>
+
   </main>
 
   <footer class="site-footer">
-    <p>© 2025–2026 赤ちゃん生後計算ツール｜無料</p>
+    <p><a href="https://0-tools.com/">0-TOOLs.JAPAN トップへ</a></p>
+    <p style="margin-top:6px;">© 2025–2026 赤ちゃん生後計算ツール｜無料</p>
   </footer>
 
   <script>
